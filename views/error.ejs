@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("./partials/navbar") %>
+    <main class="container mt-5">
+      <div class="col-6 offset-3">
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading"><%= err.message%></h4>
+          <p><%= err.stack%></p>
+        </div>
+      </div>
+    </main>
+    <%- include("./partials/footer") %>
+  </body>
+</html>

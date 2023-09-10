@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+      <%- include("../partials/flash") %>
+
+      <div class="col-10 offset-1">
+        <h3><%= recipe.title%></h3>
+        <h5>Časová náročnost: <%= recipe.time%> minut</h5>
+        <h5>Ingredience:</h5>
+        <ul>
+          <% recipe.ingredients.split(',').forEach(function(ingredient) { %>
+            <li><%= ingredient.trim() %></li>
+          <% }) %>
+        </ul>
+
+        <p><%= recipe.recipe%></p>
+        
+        <div class="d-flex justify-content-between">
+          <% if (currentUser && currentUser._id.equals(recipe.author._id)) { %>
+          <div>
+            <a class="btn btn-info" href="/recipes/<%=recipe._id%>/edit">Upravit recept</a>
+            <form action="/recipes/<%= recipe._id%>?_method=DELETE" method="post" style="display: inline;">
+              <button class="btn btn-danger">Odstranit recept</button>
+            </form>
+          </div>
+          <% } %>
+          <div>
+            <p>Přidáno uživatelem <%= recipe.author.username %></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include("../partials/footer") %> <%- include("../partials/scripts") %>
+  </body>
+</html>

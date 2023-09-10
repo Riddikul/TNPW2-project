@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+      <%- include("../partials/flash") %>
+
+      <h1 class="d-flex justify-content-center w-100">Vaše recepty</h1>
+      <div class="row justify-content-start">
+        <% for (let c of recipes) { %>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= c.title %></h5>
+                <h6 class="card-text"><%= c.time %> minut</h6>
+                <div class="d-flex flex-column align-items-end justify-content-end">
+                  <a class="btn btn-primary" href="/recipes/<%= c._id%>">Zobrazit celý recept</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </main>
+    <%- include("../partials/footer") %> <%- include("../partials/scripts") %>
+  </body>
+</html>

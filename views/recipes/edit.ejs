@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+      <%- include("../partials/flash") %>
+
+      <h1 class="text-center">Editace receptu</h1>
+      <div class="col-10 offset-1">
+        <form
+          action="/recipes/<%= recipe._id%>?_method=PATCH"
+          method="post"
+          class="validated-form"
+          novalidate
+        >
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="title" class="form-label">Název receptu:</label>
+              <input
+                type="text"
+                name="recipe[title]"
+                id="title"
+                value="<%= recipe.title%>"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="time" class="form-label">Časová náročnost (zadávejte v minutách):</label>
+              <input
+                type="text"
+                name="recipe[time]"
+                id="time"
+                value="<%= recipe.time%>"
+                class="form-control"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="ingredients" class="form-label">Ingredience:</label>
+              <textarea
+                type="text"
+                name="recipe[ingredients]"
+                id="ingredients"
+                cols="30"
+                rows="10"
+                class="form-control"
+                required
+              ><%= recipe.ingredients%></textarea>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="recipe" class="form-label">Recept:</label>
+              <textarea
+                name="recipe[recipe]"
+                id="recipe"
+                cols="30"
+                rows="15"
+                class="form-control"
+                required
+              ><%= recipe.recipe%></textarea>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <button class="btn btn-success">Aktualizujte recept</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include("../partials/footer") %> <%- include("../partials/scripts") %>
+  </body>
+</html>

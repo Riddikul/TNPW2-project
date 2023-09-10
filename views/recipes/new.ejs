@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+      <%- include("../partials/flash") %>
+
+      <h1 class="text-center">Přidat nový recept</h1>
+      <div class="col-6 offset-3">
+        <form
+          action="/recipes"
+          method="post"
+          class="validated-form"
+          novalidate
+        >
+          <div class="mb-3">
+            <label for="recipe" class="form-label">Název receptu:</label>
+            <input
+              type="text"
+              name="recipe[title]"
+              id="title"
+              class="form-control"
+              required
+            />
+          
+          </div>
+
+          <div class="mb-3">
+            <label for="recipe" class="form-label">Ingredience:</label>
+            <input
+              type="text"
+              name="recipe[ingredients]"
+              id="ingredients"
+              class="form-control"
+              required
+            />
+          
+          </div>
+
+          <div class="mb-3">
+            <label for="recipe" class="form-label">Časová náročnost (zadávejte v minutách):</label>
+            <input
+              type="text"
+              name="recipe[time]"
+              id="time"
+              class="form-control"
+              required
+            />
+          
+          </div>
+
+          <div class="mb-3">
+            <label for="recipe" class="form-label">Recept:</label>
+            <textarea
+              name="recipe[recipe]"
+              id="recipe"
+              cols="20"
+              rows="3"
+              class="form-control"
+              required
+            ></textarea>
+          
+          </div>
+          <p>
+            <button class="btn btn-success">Zveřejnit recept</button>
+          </p>
+        </form>
+    
+        
+      </div>
+    </main>
+
+    <%- include("../partials/footer") %> <%- include("../partials/scripts") %>
+  </body>
+</html>

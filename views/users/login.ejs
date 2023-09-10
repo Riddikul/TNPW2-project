@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+  <body class="d-flex flex-column vh-100">
+    <%- include("../partials/navbar") %>
+    <main class="container mt-5">
+    <%- include("../partials/flash") %>
+    
+      <h1 class="text-center">Login</h1>
+      <div class="col-6 offset-3">
+        <form
+          action="/login"
+          method="POST"
+          class="validated-form"
+          novalidate
+        >
+          <div class="mb-3">
+            <label for="username" class="form-label">Přihlašovací jméno:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              class="form-control"
+              required
+            ></input>
+          </div>
+          
+          <div class="mb-3">
+            <label for="password" class="form-label">Heslo:</label>
+            <input 
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+              required
+            ></input>
+          </div>
+          
+          <button class="btn btn-success">Přihlásit</button>
+        </form>
+      <div>
+        <div class="mt-3">
+          <span>Nemáte ještě účet? </span>
+          <a href="/register">Zaregistrujte se!</a>
+        </div>
+    </main>
+
+    <%- include("../partials/footer") %> 
+    <%- include("../partials/scripts") %>
+
+  </body>
+</html>
